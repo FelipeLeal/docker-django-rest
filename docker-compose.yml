@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  django:
+    container_name: django_rest
+    env_file:
+      - .env
+    build:
+      context: ./www
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    restart: always
+    volumes:
+      - type: bind
+        source: ./www
+        target: /code
+        volume:
+          nocopy: true
+      - type: bind
+        source: ./static
+        target: /opt/app/static
+    networks:
+      - django_rest
+    ports:
+      - "8000:8000"
+    links:
+      - mysql
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_django_rest
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    env_file:
+      - .env
+    networks:
+      - django_rest
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  django_rest:
+
+volumes:
+  www:
+  db_data: {}

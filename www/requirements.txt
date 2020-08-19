@@ -1,0 +1,6 @@
+Django
+djangorestframework
+mysqlclient
+mysql-connector-python
+psycopg2
+PyJWT
