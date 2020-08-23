@@ -16,10 +16,13 @@ docker-compose up -d --build django
 ```shell
 docker exec -it django_rest python manage.py makemigrations drugstore
 ```
-
 - Run to migrate your newly created migrations
 ```shell
 docker exec -it django_rest python manage.py migrate
+```
+- Run tests
+```shell
+docker exec -it django_rest python manage.py test
 ```
 
 ---
