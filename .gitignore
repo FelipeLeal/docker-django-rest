@@ -1,2 +1,8 @@
 .idea/
-.env
+www/django_rest/__pycache__/
+.DS_Store
+*.sqlite3
+media/
+*.pyc
+*.db
+*.pid

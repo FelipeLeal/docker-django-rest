@@ -12,9 +12,27 @@
 ```shell
 docker-compose up -d --build django
 ```
+- Run to make migrations for the models project
+```shell
+docker exec -it django_rest python manage.py makemigrations drugstore
+```
+- Run to migrate your newly created migrations
+```shell
+docker exec -it django_rest python manage.py migrate
+```
+- Run tests
+```shell
+docker exec -it django_rest python manage.py test
+```
+
 ---
 ### Setup
 First add your own `.env` file to root project, you can use the .env-example
+
+For testing add GRANT PRIVILEGES to environment user
+```
+GRANT ALL PRIVILEGES ON test_django_rest.* TO 'admin'@'%';
+```
 
 ---
 ## Support

@@ -12,9 +12,9 @@ class Drug(models.Model):
 
 class Vaccination(models.Model):
     rut = models.TextField(validators=[validate_rut])
-    dose = models.DecimalField(validators=[validate_dose], max_digits=2, decimal_places=2)
+    dose = models.DecimalField(validators=[validate_dose], max_digits=3, decimal_places=2)
     date = models.DateField()
-    drug = models.ForeignKey(Drug, on_delete=models.CASCADE)
+    drug = models.ForeignKey(Drug, on_delete=models.CASCADE, related_name='drugs')
 
     def __str__(self):
         return f'{self.rut} - {self.date}'
