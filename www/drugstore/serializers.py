@@ -12,9 +12,6 @@ class VaccinationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vaccination
         fields = ['id', 'rut', 'dose', 'date', 'drug']
-    #
-    # def validate(self, attrs):
-    #     attrs
 
     def to_representation(self, instance):
         """
