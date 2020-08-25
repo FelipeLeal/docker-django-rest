@@ -19,32 +19,26 @@ services:
       - type: bind
         source: ./static
         target: /opt/app/static
-    networks:
-      - django_rest
     ports:
-      - "8000:8000"
-    links:
-      - mysql
+      - target: 8000
+        published: 8000
+        protocol: tcp
+        mode: host
     depends_on:
       - mysql
   mysql:
     image: mysql:5.7
     container_name: mysql_django_rest
     restart: always
-    tty: true
     ports:
-      - "3306:3306"
-    expose:
-      - "3306"
+      - target: 3306
+        published: 3306
+        protocol: tcp
+        mode: host
     env_file:
       - .env
-    networks:
-      - django_rest
     volumes:
       - db_data:/var/lib/mysql
-
-networks:
-  django_rest:
 
 volumes:
   www:
