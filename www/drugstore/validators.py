@@ -11,7 +11,11 @@ def validate_rut(value):
     :return:
     """
     try:
-        chile_rut.validate_rut(value)
+        if not chile_rut.validate_rut(value):
+            raise ValidationError(
+            _('RUT %s Invalid RUT'),
+            params=value
+        )
     except Exception as exc:
         raise ValidationError(
             _('RUT %s Invalid format'),
