@@ -62,5 +62,6 @@ class ValidationView(views.APIView):
         # A sliding token has an expiration time, and for create a Token
         # with simplejwt its needed set a time, thus its a perfect simple implementation
         Token.token_type = 'sliding'
+        Token.lifetime = timedelta(minutes=20)
         token = Token.for_user(user)
         return response.Response({'token': token.__str__()})
