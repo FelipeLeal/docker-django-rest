@@ -9,7 +9,6 @@ services:
       context: ./www
       dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
-    restart: always
     volumes:
       - type: bind
         source: ./www
@@ -29,7 +28,6 @@ services:
   mysql:
     image: mysql:5.7
     container_name: mysql_django_rest
-    restart: always
     ports:
       - target: 3306
         published: 3306

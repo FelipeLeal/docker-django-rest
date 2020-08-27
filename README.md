@@ -81,7 +81,7 @@ El log the python mostrará un mensaje de error ya que no encuentra el archivo m
 
 Comandos necesarios para levantar proyecto:
 ```schell
-docker exec -it django_rest python manage.py startproject {project-name}
+docker exec -it django_rest django-admin startproject {project-name}
 docker exec -it django_rest python manage.py startapp {app-name}
 ```
 
